@@ -1,0 +1,3 @@
+# Verilog Utilities
+
+Various utilities for HDL applications implemented in Verilog. Each folder in this repository contains the Verilog module(s) for the utility and a top level Driver entity that demonstrates/tests the utility module(s). Some utilities may be used when demonstrating others. All constraints files are targeted to a Nexys4 Artix-7 FPGA and all demonstrative tests are accompanied with a Xilinx ISE project file.
