@@ -1,5 +1,5 @@
 module Debounce (
-    input clk, 
+    input clk,       // 100 MHz clock
     input noisy,
     output debounced
 );
@@ -9,7 +9,7 @@ reg d1, d2, d3;
 assign debounced = d1 & d2 & d3;
 
 always @(posedge clk) begin
-    if (&counter) begin
+    if (&counter) begin // divide clock to about 190 Hz
         counter <= 0;
         d1 <= noisy;
         d2 <= d1;
