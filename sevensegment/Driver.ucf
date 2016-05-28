@@ -1,0 +1,23 @@
+// Implementation Contraints File for Nexys4 Artix-7 FPGA
+
+// Clock
+NET "CLK_100M" LOC = E3 | IOSTANDARD = LVCMOS33;
+NET "CLK_100M" PERIOD = 10ns HIGH 5ns;
+
+// Seven Segment Display
+NET "displays<7>" LOC = M1 | IOSTANDARD = LVCMOS33 | TIG;
+NET "displays<6>" LOC = L1 | IOSTANDARD = LVCMOS33 | TIG;
+NET "displays<5>" LOC = N4 | IOSTANDARD = LVCMOS33 | TIG;
+NET "displays<4>" LOC = N2 | IOSTANDARD = LVCMOS33 | TIG; 
+NET "displays<3>" LOC = N5 | IOSTANDARD = LVCMOS33 | TIG;
+NET "displays<2>" LOC = M3 | IOSTANDARD = LVCMOS33 | TIG;
+NET "displays<1>" LOC = M6 | IOSTANDARD = LVCMOS33 | TIG;
+NET "displays<0>" LOC = N6 | IOSTANDARD = LVCMOS33 | TIG; 
+//NET "segments<7>" LOC = M4 | IOSTANDARD = LVCMOS33 | TIG;
+NET "segments<6>" LOC = L3 | IOSTANDARD = LVCMOS33 | TIG;
+NET "segments<5>" LOC = N1 | IOSTANDARD = LVCMOS33 | TIG;
+NET "segments<4>" LOC = L5 | IOSTANDARD = LVCMOS33 | TIG;
+NET "segments<3>" LOC = L4 | IOSTANDARD = LVCMOS33 | TIG;
+NET "segments<2>" LOC = K3 | IOSTANDARD = LVCMOS33 | TIG;
+NET "segments<1>" LOC = M2 | IOSTANDARD = LVCMOS33 | TIG;
+NET "segments<0>" LOC = L6 | IOSTANDARD = LVCMOS33 | TIG;

@@ -2,11 +2,19 @@
 
 Each folder in this repository contains the Verilog module(s) for the utility and a top level Driver entity that demonstrates/tests the utility module(s). Some utilities may be used when demonstrating others. All constraints files are targeted to a Nexys4 Artix-7 FPGA and all demonstrative tests are accompanied with a Xilinx ISE project file.
 
+### SevenSegment
+
+*A multi seven-segment display controller.*
+
+The module assumes, like on the Nexys4, that the segment lines go to all of the displays. The module cycles through selecting each of the displays and outputs the corresponding display value for each of them. The module is also parameterized for any number of displays.
+
+The test module just displays a number on 8 displays.
+
 ### VGA
 
 *A 1024 x 768 resolution Video Graphics Array (VGA) controller.*
 
-The module takes a pixel clock and has two counters, one for the horizontal direction and one for the vertical direction. The counters coount the addressable pixel values and append the required front porch, sync and back porch times before repeating the cycle.
+The module takes a pixel clock and has two counters, one for the horizontal direction and one for the vertical direction. The counters count the addressable pixel values and append the required front porch, sync and back porch times before repeating the cycle.
 
 This is demonstrated by outputting a full 12 bit color spectrum (see below for expected output). The pixel clock of 65 MHz is achieved using a Xilinx generated core.
 
