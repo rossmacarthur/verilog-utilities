@@ -1,8 +1,8 @@
 module Driver (
-    input CLK_100M,
-    output HS,
-    output VS,
-    output [11:0] RGB
+  input CLK_100M,
+  output HS,
+  output VS,
+  output [11:0] RGB
 );
 
 // Basic setup
@@ -20,30 +20,30 @@ wire [3:0] shade;
 assign spectrum = countY[9:7];
 assign shade = countY[6:3];
 always @(posedge CLK_VGA)
-    case(spectrum)
-        3'b000  : pixel <=  {  4'hF, shade,  4'h0 };
-        3'b001  : pixel <= ~{ shade,  4'h0,  4'hF };
-        3'b010  : pixel <=  {  4'h0,  4'hF, shade };
-        3'b011  : pixel <= ~{  4'hF, shade,  4'h0 };
-        3'b100  : pixel <=  { shade,  4'h0,  4'hF };
-        3'b101  : pixel <= ~{  4'h0,  4'hF, shade };
-        default : pixel <= 12'hFFF;
-    endcase
+  case(spectrum)
+    3'b000  : pixel <=  {  4'hF, shade,  4'h0 };
+    3'b001  : pixel <= ~{ shade,  4'h0,  4'hF };
+    3'b010  : pixel <=  {  4'h0,  4'hF, shade };
+    3'b011  : pixel <= ~{  4'hF, shade,  4'h0 };
+    3'b100  : pixel <=  { shade,  4'h0,  4'hF };
+    3'b101  : pixel <= ~{  4'h0,  4'hF, shade };
+    default : pixel <= 12'hFFF;
+  endcase
 
 // Connect up modules
 Clock_Generator Clock_G (
-    .CLK_IN1  ( CLK_100M ), // input
-  //.CLK_OUT1 (          ), // output
-    .CLK_OUT2 ( CLK_VGA  )  // output
+  .CLK_IN1  ( CLK_100M ), // input
+//.CLK_OUT1 (          ), // output
+  .CLK_OUT2 ( CLK_VGA  )  // output
 );
 
 VGA_Control VGA_C (
-    .clk    ( CLK_VGA ), // input 
-  //.reset  (         ), // input
-    .HS     ( HS      ), // output
-    .VS     ( VS      ), // output
-    .countX ( countX  ), // output [10:0]
-    .countY ( countY  )  // output [9:0]
+  .clk    ( CLK_VGA ), // input 
+//.rst    (         ), // input
+  .HS     ( HS      ), // output
+  .VS     ( VS      ), // output
+  .countX ( countX  ), // output [10:0]
+  .countY ( countY  )  // output [9:0]
 );
 
 endmodule
