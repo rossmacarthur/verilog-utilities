@@ -18,6 +18,6 @@ A 1024 x 768 resolution Video Graphics Array (VGA) controller. The module takes 
 
 Both the transmitter and receiver use a 10 bit data frame (start bit, stop bit and one byte of data). The receiver needs a clock of 16 times the baudrate for correct sampling.
 
-## Debounce
+### Debounce
 
 Simple button (or any signal) debouncer. This uses 3 flip flops that are clocked at 190 Hz and each driven from the previous flip flop. Only when all flip flops are outputting a high does the output go high. This corresponds to about a 15 ms debounce time. 
