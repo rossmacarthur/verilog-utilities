@@ -1,6 +1,14 @@
+// Simple 8-bit UART transmitter
+// Author: Ross MacArthur (https://github.com/rossmacarthur)
+// Description:
+// - Sends data in 8-bit chunks, LSB first
+// - No parity
+// - Single start and stop bit
+// - Starts transmitting when start line is pulsed
+
 module UART_TX (
     input clk,        // baudrate
-    input start,      // pulse line to transmit
+    input start,      // start transmitting
     input [7:0] data, // data to transmit 
     output reg busy,  // high when transmitting
     output reg TX     // UART transmit line

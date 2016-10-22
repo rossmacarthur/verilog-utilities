@@ -1,4 +1,9 @@
-// 1024 x 768 VGA -- see http://tinyvga.com/vga-timing/1024x768@60Hz
+// 1024 x 768 VGA controller
+// Author: Ross MacArthur (https://github.com/rossmacarthur)
+// Description:
+// - Requires pixel clock of 65 MHz
+// - Loops addressable pixel values, front porch, sync and back porch times
+
 module VGA_Control (
   input clk,                // pixel clock of 65 MHz
   input rst,
@@ -15,19 +20,15 @@ always @(posedge clk) begin
     HS <= 1; 
     VS <= 1;
   end else begin
-    // Count higher than the display area so that it includes front porch,
-    // back porch and sync pulse time
     if (countX == 1343) begin
       countX <= 0;
       if (countY == 805) countY <= 0;
       else countY <= countY + 1'b1;
     end else countX <= countX + 1'b1;
-    // Pulse horizontal syncs
-    if      (countX == 1047) HS <= 0; // start sync-pulse of 96
-    else if (countX == 1143) HS <= 1; // end sync-pulse of 96
-    // Pulse verticle syncs 
-    if      (countY == 770) VS <= 0; // start sync-pulse of 2
-    else if (countY == 772) VS <= 1; // end sync-pulse of 2
+    if      (countX == 1047) HS <= 0; // start horizontal sync-pulse of 96
+    else if (countX == 1143) HS <= 1; // end horizontal sync-pulse of 96
+    if      (countY == 770) VS <= 0;  // start vertical sync-pulse of 2
+    else if (countY == 772) VS <= 1;  // end vertical sync-pulse of 2
   end
 end
 

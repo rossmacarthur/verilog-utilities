@@ -1,6 +1,9 @@
+// Debounces a bouncy input
+// Author: Ross MacArthur (https://github.com/rossmacarthur)
+
 module Debounce (
-  input clk,       // 100 MHz clock
-  input noisy,
+  input clk,
+  input bouncy,
   output debounced
 );
 
@@ -9,9 +12,9 @@ reg d1, d2, d3;
 assign debounced = d1 & d2 & d3;
 
 always @(posedge clk) begin
-  if (&counter) begin // divide clock to about 190 Hz
+  if (&counter) begin
     counter <= 0;
-    d1 <= noisy;
+    d1 <= bouncy;
     d2 <= d1;
     d3 <= d2;
   end else

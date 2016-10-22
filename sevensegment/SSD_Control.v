@@ -1,4 +1,10 @@
-module SSD_Control #(N = 4) (
+// Seven-segment display controller
+// Author: Ross MacArthur (https://github.com/rossmacarthur)
+// Description: 
+// - Cycles through selecting each of the displays
+// -  Outputs the corresponding display value for each display
+
+module SS_Control #(N = 4) (
   input clk,               // clock freq of about 750 Hz
   input rst,
   input [N*4-1:0] numbers, // list of 4 bit numbers to display

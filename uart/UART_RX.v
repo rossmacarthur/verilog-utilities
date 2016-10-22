@@ -1,3 +1,11 @@
+// Simple 8-bit UART receiver
+// Author: Ross MacArthur (https://github.com/rossmacarthur)
+// Description:
+// - Samples input line at 16 time the baudrate
+// - Receives data in 8-bit chunks, LSB first
+// - No parity
+// - Single start and stop bit
+
 module UART_RX (
   input clk,            // 16 * baudrate
   input rst,            // enable receiver
